@@ -1,0 +1,17 @@
+applicationName: points-fullstack
+
+services:
+  - name: frontend
+    image: usuario/frontend:latest
+    port: 80
+    
+  - name: backend
+    image: usuario/backend:latest
+    environment:
+      MONGO_URI: mongodb://mongo:27017/points_db
+    port: 5000
+    
+  - name: mongo
+    image: mongo:latest
+    port: 27017
+    storage: 5Gi
