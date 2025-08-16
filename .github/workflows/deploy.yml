@@ -1,8 +1,10 @@
 name: AstraOps Deploy
 
 on:
-  push:
-    branches: [main]
+  workflow_run:
+    workflows: ["build and push docker images"]
+    types:
+      - completed
 
 jobs:
   deploy:
@@ -19,10 +21,11 @@ jobs:
 
       - name: Deploy with AstraOps
         run: |
-          astraops-cli -h 
+          astraops-cli -h
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
           AWS_REGION: ${{ vars.AWS_REGION }}
           ASTRAOPS_API_KEY: ${{ secrets.ASTRAOPS_API_KEY }} 
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
