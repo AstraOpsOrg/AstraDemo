@@ -1,12 +1,12 @@
 applicationName: points-fullstack
 
 services:
-  - name: frontend
-    image: usuario/frontend:latest
+  - name: astrademo-frontend
+    image: jorgeflorentino8/astrademo-frontend:latest
     port: 80
     
-  - name: backend
-    image: usuario/backend:latest
+  - name: astrademo-backend
+    image: jorgeflorentino8/astrademo-backend:latest
     environment:
       MONGO_URI: mongodb://mongo:27017/points_db
     port: 5000
@@ -14,4 +14,4 @@ services:
   - name: mongo
     image: mongo:latest
     port: 27017
-    storage: 5Gi
+    storage: 10Mi
