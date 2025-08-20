@@ -28,4 +28,5 @@ jobs:
           AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
           ASTRAOPS_API_KEY: ${{ secrets.ASTRAOPS_API_KEY }} 
+          ASTRAOPS_API_URL: ${{ secrets.ASTRAOPS_API_URL }}
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
