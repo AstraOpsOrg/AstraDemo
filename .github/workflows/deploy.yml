@@ -19,9 +19,10 @@ jobs:
       - name: Ensure AstraOps CLI is in PATH
         run: astraops-cli -h 
 
-      - name: Deploy with AstraOps ( + monitoring)
-        run: |
-          astraops-cli deploy -m
+      #- name: Deploy with AstraOps ( + monitoring)
+      #  run: astraops-cli deploy -m
+      - name: Destroy with AstraOps 
+        run: astraops-cli destroy      
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
