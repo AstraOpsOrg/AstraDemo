@@ -1,4 +1,4 @@
-name: Run AstraOps deploy
+name: Run AstraOps deploy (with changes to update k8s)
 
 on:
   workflow_run:
@@ -19,8 +19,8 @@ jobs:
       - name: Ensure AstraOps CLI is in PATH
         run: astraops-cli -h 
 
-      - name: Deploy with AstraOps ( + monitoring)
-        run: astraops-cli deploy -m
+      - name: Deploy with AstraOps 
+        run: astraops-cli deploy 
       #- name: Destroy with AstraOps 
       #  run: astraops-cli destroy      
         env:
