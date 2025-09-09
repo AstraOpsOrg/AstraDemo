@@ -75,7 +75,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Points Counter testing AstraOps with changes!</h1>
+      <h1>Points Counter</h1>
       {loading ? (
         <p>Loading points...</p>
       ) : (
