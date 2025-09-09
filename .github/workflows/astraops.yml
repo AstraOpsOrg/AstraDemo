@@ -1,4 +1,4 @@
-name: Run AstraOps 
+name: Run AstraOps with changes 
 
 on:
   workflow_run:
@@ -19,7 +19,7 @@ jobs:
       - name: Ensure AstraOps CLI is in PATH
         run: astraops-cli -h 
 
-      - name: Deploy with AstraOps 
+      - name: Deploy with changes with AstraOps 
         run: astraops-cli deploy --monitoring
       #- name: Destroy with AstraOps 
       #  run: astraops-cli destroy      
@@ -30,4 +30,4 @@ jobs:
           AWS_REGION: ${{ vars.AWS_REGION }}
           ASTRAOPS_API_KEY: ${{ secrets.ASTRAOPS_API_KEY }} 
           ASTRAOPS_API_URL: ${{ secrets.ASTRAOPS_API_URL }}
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}  
