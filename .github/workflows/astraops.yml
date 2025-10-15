@@ -1,4 +1,4 @@
-name: AstraOps Deploy
+name: Run AstraOps 
 
 on:
   workflow_run:
@@ -17,15 +17,17 @@ jobs:
         run: npm install -g @astraops/astraops-cli
 
       - name: Ensure AstraOps CLI is in PATH
-        run: astraops-cli help 
+        run: astraops-cli -h 
 
-      - name: Deploy with AstraOps
-        run: |
-          astraops-cli -h
+      - name: Deploy with AstraOps 
+        run: astraops-cli deploy --monitoring
+      #- name: Destroy with AstraOps 
+      #  run: astraops-cli destroy      
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
           AWS_REGION: ${{ vars.AWS_REGION }}
           ASTRAOPS_API_KEY: ${{ secrets.ASTRAOPS_API_KEY }} 
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+          ASTRAOPS_API_URL: ${{ secrets.ASTRAOPS_API_URL }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}  
